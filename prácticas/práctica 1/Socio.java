@@ -34,8 +34,4 @@ public class Socio{
 		System.out.println(out);
 		System.out.println(nombre + ", " + correo);
 	}	
-
-	public static void main(String[] args){
-		new Socio("juan", "lmontane@hotmail.com").mostrar();
-	}
 }
