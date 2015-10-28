@@ -9,7 +9,6 @@ public class LecturaTecladoScanner{
 		System.out.println("\t\t1. Opción 1");
 		System.out.println("\t\t2. Opción 2");
 		System.out.println("\t\t3. Opción 3");
-		
 		System.out.print("Escriba una opción:");
 
 		int opcion = in.nextInt();	
