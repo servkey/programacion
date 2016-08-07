@@ -1,0 +1,11 @@
+Sublime (editor de texto)
+http://www.sublimetext.com/2
+
+JDK (Java)
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+Visual Paradigm
+https://www.visual-paradigm.com/download/community.jsp
+
+Netbeans
+https://netbeans.org/features/index.html
