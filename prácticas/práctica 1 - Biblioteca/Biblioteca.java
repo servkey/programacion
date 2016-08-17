@@ -8,7 +8,7 @@ public class Biblioteca{
 		p1.setNombre("Luis");
 		p1.setEmail("luis@gmail.com");
 
-		System.out.println(p11);		
+		System.out.println(p1);		
 		//System.out.println("Representación Cadena:" + p1.toString());
 		
 		System.out.println(p1.getNombre());
