@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Publicacion{
 	private Date fechaPublicacion;
 	private String genero;

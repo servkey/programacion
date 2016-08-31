@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Revista extends Publicacion{
 	private String ISSN;
 	private String indice;
