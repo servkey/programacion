@@ -4,8 +4,17 @@ public class Publicacion{
 	private Date fechaPublicacion;
 	private String genero;
 	private String titulo;
+
+	//Representación relación 
+	private Copia copias[];
+
+
 	
 	public Publicacion(){
+	}
+
+	public Copia[] getCopias(){
+		return copias;
 	}
 
 	public Publicacion(Date fechaPublicacion, String genero, String titulo){
@@ -18,7 +27,7 @@ public class Publicacion{
 		return genero;
 	}
 
-	public String setGenero(String genero){
+	public void setGenero(String genero){
 		this.genero = genero;
 	}
 
@@ -26,7 +35,7 @@ public class Publicacion{
 		return titulo;
 	}
 
-	public String setTitulo(String titulo){
+	public void setTitulo(String titulo){
 		this.titulo = titulo;
 	}
 
