@@ -17,8 +17,8 @@ public class ServidorProgramacion{
 
 			String texto = br.readLine();
 			while (texto != null){
-				texto = br.readLine();
 				System.out.println(texto);
+				texto = br.readLine();
 			}
 
 			
