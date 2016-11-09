@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 public class Ejercicio6{
 	public static void main(String args[]){
 		try{
-			Socket socket = new Socket("localhost", 9090);
+			Socket socket = new Socket("www.uv.mx", 80);
 			//Escribiendo 
 			System.out.println("Enviando información al servidor.....:");
 

@@ -9,6 +9,7 @@ public class ServidorProgramacion{
 		try{
 
 			ServerSocket ss = new ServerSocket(9090);
+			System.out.println("Escuchando en el puerto 9090!");
 			Socket s = ss.accept();
 
 			InputStream is = s.getInputStream();

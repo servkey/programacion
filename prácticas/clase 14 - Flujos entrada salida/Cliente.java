@@ -1,4 +1,4 @@
-import java.io.*;
+wwwwimport java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -13,7 +13,7 @@ public class Cliente{
 			OutputStreamWriter osr = new OutputStreamWriter(os);
 			BufferedWriter bw = new BufferedWriter(osr);
 			PrintWriter pw = new PrintWriter(bw);
-			pw.write("GET / HTTP/1.0\nHost: www.uv.mx\n\n");
+			pw.write("Saludos desde el cliente Java \n");
 			pw.flush();
 
 
@@ -21,7 +21,7 @@ public class Cliente{
 			InputStreamReader isr = new InputStreamReader(is);
 			BufferedReader br = new BufferedReader(isr);
 
-			System.out.println("Leyendo del servidor www.uv.mx:80:");
+			System.out.println("Leyendo del servidor Java personalizado");
 			
 			String texto = br.readLine();
 
