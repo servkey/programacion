@@ -12,6 +12,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Calculadora extends JFrame implements ActionListener{
+
+	private int memoria; 
+	private String operador;
+
 	private JPanel pnlResultado;
 	private JTextField txtResultado;
 	private JPanel pnlCentral;
@@ -52,7 +56,7 @@ public class Calculadora extends JFrame implements ActionListener{
 		agregarEventos();
 
 		//Mostrar
-		setSize(600, 600);
+		setSize(900, 700);
 		setVisible(true);
 	}
 
@@ -164,6 +168,24 @@ public class Calculadora extends JFrame implements ActionListener{
 			case "9":
 				txtResultado.setText(txtResultado.getText() + comando);
 				System.out.println("Es un número: " + comando);
+				break;
+
+			case "÷":
+			case "+":
+			case "×":
+			case "-":
+				//Es un operador
+				memoria = Integer.parseInt(txtResultado.getText());
+				txtResultado.setText("");
+				operador = comando;
+				break;
+			case "=":
+				//evaluar expresión....
+				if (operador.equals("+")){
+					int numtemp = Integer.parseInt(txtResultado.getText());
+					int resultado = memoria + numtemp;
+					txtResultado.setText(resultado + "");
+				}
 				break;
 		}
 	}
