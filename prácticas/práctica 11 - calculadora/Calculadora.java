@@ -11,7 +11,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Calculadora extends JFrame{
+public class Calculadora extends JFrame implements ActionListener{
 	private JPanel pnlResultado;
 	private JTextField txtResultado;
 	private JPanel pnlCentral;
@@ -60,6 +60,7 @@ public class Calculadora extends JFrame{
 	public void crearComponentes(){
 		txtResultado = new JTextField(40);
 		txtResultado.setFont(new Font("Arial", Font.BOLD, 20));
+		txtResultado.setText("");
 
 		pnlResultado = new JPanel();
 		pnlResultado.setLayout(new FlowLayout());
@@ -119,7 +120,52 @@ public class Calculadora extends JFrame{
 	}
 	
 	public void agregarEventos(){
+		addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e){
+				System.exit(0);
+			}
+		});
 
+		btnCero.addActionListener(this);
+		btnUno.addActionListener(this);
+		btnDos.addActionListener(this);
+		btnTres.addActionListener(this);
+		btnCuatro.addActionListener(this);
+		btnCinco.addActionListener(this);
+		btnSeis.addActionListener(this);
+		btnSiete.addActionListener(this);
+		btnOcho.addActionListener(this);
+		btnNueve.addActionListener(this);
+		btnCE.addActionListener(this);
+		btnC.addActionListener(this);
+		btnBorrar.addActionListener(this);
+		btbMasMenos.addActionListener(this);
+		btnPunto.addActionListener(this);
+		btnIgual.addActionListener(this);
+		btnDivision.addActionListener(this);
+		btnMultiplicacion.addActionListener(this);
+		btnResta.addActionListener(this);
+		btnSuma.addActionListener(this);
+	}
+
+	public void actionPerformed(ActionEvent e){
+		String comando = e.getActionCommand().trim();
+
+		switch(comando){
+			case "0":
+			case "1":
+			case "2":
+			case "3":
+			case "4":
+			case "5":
+			case "6":
+			case "7":
+			case "8":
+			case "9":
+				txtResultado.setText(txtResultado.getText() + comando);
+				System.out.println("Es un número: " + comando);
+				break;
+		}
 	}
 
 	public static void main(String args[]){
