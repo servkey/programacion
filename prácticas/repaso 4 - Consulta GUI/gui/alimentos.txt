@@ -1,2 +1,0 @@
-Nombre del alimento: frijoles, Calorías: 10, Carbohidratos: 30
-Nombre del alimento: nachos, Calorías: 4000, Carbohidratos: 400

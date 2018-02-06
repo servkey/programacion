@@ -1,3 +1,0 @@
-Nombre del alimento: chilaquiles, Calorías: 100, Carbohidratos: 100
-Nombre del alimento: sandwitch, Calorías: 102, Carbohidratos: 321
-Nombre del alimento: al1, Calorías: 203, Carbohidratos: 21

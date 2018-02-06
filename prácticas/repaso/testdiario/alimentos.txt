@@ -1,6 +1,0 @@
-Nombre del alimento: chilaquiles, Calorías: 1000, Carbohidratos: 999
-Nombre del alimento: frijoles, Calorías: 123, Carbohidratos: 12
-Nombre del alimento: taco, Calorías: 100, Carbohidratos: 20
-Nombre del alimento: asd, Calorías: 2, Carbohidratos: 1
-Nombre del alimento: hotdog, Calorías: 102, Carbohidratos: 39
-Nombre del alimento: salmon, Calorías: 300, Carbohidratos: 10
