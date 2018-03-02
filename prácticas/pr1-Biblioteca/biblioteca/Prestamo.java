@@ -13,6 +13,34 @@ public class Prestamo{
 	}
 
 
+	public void mostrarDatosPrestamo(){
+		System.out.println("************Préstamo*********");
+		System.out.println("Fecha de solicitud: " + fechaSolicitud);
+		System.out.println("Libro prestado:");	
+		for (int i = 0; i < copias.length; i++){
+			if (copias[i] != null){
+				copias[i].mostrarDatosLibro();
+			}
+		}
+		
+		if (socio != null){
+			System.out.println("**********Socio***********");	
+			System.out.println("Nombre: " + socio.getNombre());	
+			System.out.println("Matrícula: " + socio.getMatricula());	
+		}else{
+			System.out.println("Sin socio asociado");
+		}	
+		
+		if (trabajador != null){
+			System.out.println("**********Trabajador***********");	
+			System.out.println("Nombre: " + trabajador.getNombre());	
+			System.out.println("Número de personal: " + trabajador.getNumeroPersonal());	
+			System.out.println("****************************");
+		}else{
+			System.out.println("Sin trabajador asociado");
+		}
+	}
+
 	public String getFechaSolicitud(){
 		return fechaSolicitud;
 	}
