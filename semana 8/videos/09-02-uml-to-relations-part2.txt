@@ -1,0 +1,487 @@
+Ok, we've finished with classes and with
+associations, now let's talk about associations classes.
+Association classes are pretty straight forward.
+We're not going to generate new
+relations more then we're just
+going to add attributes to
+relations that we're generating anyway,
+so let me use our usual example
+with the students and colleges and
+we'll add some information to their application.
+Ok, so, here's our UML diagram.
+We still have students applying to
+colleges and then we've added
+an association class, which
+as you remember is attached to
+an association and it
+gives extra attributes for that association.
+So, here we're saying when a
+student applies to a college,
+we'll have a date of that
+application and a decision of that application.
+The first scheme that I've
+shown down here is what
+we would get if we use
+the techniques we've already learned without
+the association class so the student
+class generates the student relation,
+college generates college and then
+the applied association generates a
+relation that has a key from each side.
+And by the way, right now
+let's say that there's no
+multiplicities or other
+information that's going to give
+us special keys so in
+that case the applied relation doesn't
+have any keys other than
+the two attributes together.
+And further more, because we
+have no special multiplicities, we
+won't be folding that relation
+into others as we showed in the previous example.
+So, now what do we do with our association class?
+Well, as you can probably guess, it's quite simple.
+All we do is extend our
+applied relation to include
+the attributes in the association class.
+So, we just add date and
+decision right here and then we're all set.
+Now there's actually a few things I want to mention at this point.
+First of all, I discussed in
+the video on UMO modeling.
+The fact that UMO assumes
+that when you have a relationship or
+an association between two
+classes, there's at most
+one instance of that
+association between any two elements of the class.
+And that is, can be
+seen quite well in this
+relational scheme up because
+we're assuming we have a
+most one relationship between any
+student and any college and
+then we have associated with that
+one relationship, the date and the decision.
+A second thing I wanted
+to talk about at this point
+in time is the fact that
+we for an automatic translation require
+that we have a key for every regular class.
+When I mentioned that at the
+beginning of the video, I wasn't
+able to motivate it very
+well but this example explains it pretty well.
+When we want automatic translation, the
+translation for an association
+requires a key from each
+side, and each side
+is going to be a regular class in that case.
+So, we needed to have a
+student ID or some
+key for the student class and
+we needed a key for the
+college class in order to capture the association.
+On the other hand, here the
+application info is not
+a regular class, this is
+an association class and we're
+just defining that as not
+regular and we don't need
+to have a key for this one
+because we're just adding their
+attributes to the relation
+for the association itself and the
+last thing that I wanted to mention
+is that the rules we
+saw for determining keys for
+the relation associated with associations
+and for folding in the
+class and relations for associations
+also work when we have
+an association class and it just goes naturally.
+You just bring the attributes with
+the association class along with
+the attributes that you have for the association.
+You might want to give that
+a try on an example just to
+see how it works but again it's pretty straight forward.
+Now let's take a look at
+how self associations are translated to relations.
+It actually follows exactly the same
+rules but it's worth while looking at to see exactly what happens.
+So here's our first example
+of association which was sibling
+relationships between students.
+So in this case, we generate
+the relation for the class
+as usual, student ID, name and
+GPA and then we
+generate a relation for our
+association just following the
+same that we already had
+when we had an association between
+two different classes so we
+need to grab one key from
+each side, well it's the
+same side that we're
+grabbing from so the one
+thing we need to do is just
+change the attribute names
+so that we have two instances
+of the key attribute from the class, but they have different names.
+So you can see what we're doing here.
+We're just saying that we have sibling relationship.
+We take the student ID from
+the two students who are
+siblings, and that pair
+becomes a tuple in our
+sibling relation and because
+so we have stars on both sides
+so we're not making any assumptions about multiplicities.
+We don't have any zero dot dot ones or one dot dot ones.
+Then we don't have any key
+for the sibling relation except the two attributes together.
+Now, the other example we had
+in self-association, was colleges
+being branches of other colleges.
+So here's our college relation
+that we generate with the
+usual attributes and then
+we have our, that's the key there.
+We have our association which we're
+calling branch which takes
+a home campus and a
+satellite campus and since we've
+labeled those two sides we can
+actually use those labels as
+the attributes for the relation we generate.
+So we'll call it branch and
+we'll have home and satellite.
+So that's saying that the
+satellite, the campus on
+the, the college on the
+right hand side is a
+satellite of the one on the left hand side.
+Now these values here will
+be college names that
+will be the domain that we're
+drawing from but we'll calling
+home and satellite to distinguish their roles in the association.
+Now what about keys?
+We said before that every
+campus, every satellite campus
+has exactly one home campus so we write it that way.
+And that a home campus could have,
+I think we said something like
+zero to ten satellite campuses but
+in terms of generating our relations
+the only really important thing
+is this one to one and
+if you remember what our rules
+said, it said that
+if we have one one to
+one on one side then
+the other side is a
+key in the association relation.
+So what that would tell us
+is that satellite is a
+key here and that does
+make sense, so we'll only
+have each satellites home campus
+listed once and, but
+a home might have many
+satellites so the left hand would not be a key.
+Ok, we're getting there.
+We finished the first three and now it's time for sub classes.
+This is a pretty big one.
+First of all, it turns out that
+there's well atleast three and
+three commonly use translations from
+a sub class relationship into
+relations so let me
+setup a generic sub classing setup
+and then we'll talk about the three
+different translation and when we might use which one.
+So, here's our generic set up, I had to draw it a little funny to fit it in the space.
+S is our super class
+and then we have two sub
+classes S1 and S2
+and just as a reminder
+what this says is that we
+have object of type S
+and they have a key attribute
+call K and another attribute
+call A and then
+we have sub classes of those,
+one called S1 which will
+have attributes K and A
+and will also have an attribute
+B and the difference to
+the sub class as two that
+will have attributes K and A
+inherited from its parent and
+then an additional attribute C. Now
+there are three different ways,
+as I said, atleast three that we
+could translate this UML diagram to relations.
+In the first way, we
+have a relation for each
+of our classes including the sub-classes
+and the sub-class relations will contain
+their own attributes, plus the key of the super class.
+In the second case, we
+still have one relation for
+each of our three classes, but
+in this case the sub-class relation contains
+all of the attributes from the
+super class and then the
+third case we just use
+one mega relation for the
+whole thing that contains all
+of the super class and sub-class attributes.
+So let's take a look at
+what the three different translations
+would produce for this particular setup.
+For the first one we'll have
+our relation for S that's
+going to have K and A,
+then we'll have one relation for
+each of the two sub-classes, S1,
+that will contain the key
+for the super class, so it
+will be K and that
+will still be a key here for
+the sub-class and B. So,
+to find all components of
+an object of S1 will
+get it's A competent from
+the super class, following that key, and then, we'll get the B component.
+from this relation and then
+finally say S2 will be
+similar, it will have the
+key for the super class
+and attribute C, again what
+this will require is some assembly
+to get all attributes of the sub classes.
+Now, let's look at the second translation.
+We still have the super class,
+and our sub classes now
+are going to contain all of
+the attributes that are relevant
+so they'll have the key attribute from the super class.
+They'll also have attribute A
+and attribute B and then
+S2 will similarly have
+K and then A
+and then C. So in
+this case what we can see is
+that when we have an object
+that's in a sub class all
+of it's information will be in
+it's sub class relation and the
+super class will only be
+used for objects that are
+in the super class but not in any of the sub classes.
+And the third translation says, let's
+just make a mega relation that contains everything.
+So, it will have the key
+attribute K and A
+and B and C. And
+in that case, we can
+see that we may have some
+null values, so if we
+have an object that's only
+in sub class as one for
+example, it would then
+have a null attribute C. If
+we add an object that was
+only in the super class and
+not in any of the sub
+classes it would have a
+null for both B and C.
+Now as you may have noticed,
+what has already been on
+the slide the entire time is
+that the best translation may depend
+on the properties of the sub
+class relationship and if
+you remember, we had the properties
+overlapping versus disjoint, and complete versus incomplete.
+So overlapping meant that we
+might have objects that were
+in more than one sub class,
+disjoint meant that's not possible,
+complete said that every
+object that's in the super
+class and the super class
+is also in at least
+one of the sub classes, where incomplete
+said that there would be some
+objects, or they could be they're
+in the super class and not in any sub classes.
+Sort of, alluded to how
+some of those properties affect the different translations.
+But, let's look at it very specifically.
+Let's suppose, for example, that
+we had a heavily overlapping
+sub class relationship.
+In other words, we have many
+objects that are in multiple
+subclasses; if that's the
+case then we might prefer
+design three because design
+three captures all of
+the different attributes in one
+place so if many objects have
+all those attributes we might
+like to just have them together
+rather than needing to assemble them from the different pieces.
+On the other hand, let's say
+that we have have a disjoint
+and furthermore, let's say it's complete.
+So, we have every
+element being in exactly one
+subclass and there are no
+elements elements that are in just the super class.
+So in that case, we might
+like to use design two because
+design two puts each object
+in individual subclass relation and
+furthermore, since it's complete, we
+could actually, in this particular
+case, get rid of the first relation.
+We wouldn't need that, and so
+the best design would be number
+2, modified to only have the subclass relations.
+So, now, let's revisit our
+gigantic example from the
+UML modeling video and see how that would be translated to relations.
+So, just to remind you
+what's going on in this big
+diagram we have students, and
+students have a student
+ID and a name and then
+some of our students might be foreign students and they have a country.
+Some of our students may be domestic
+students, and that they would
+have a state and a social security number.
+We'll assume that every student
+is either foreign or domestic, and
+then some of our
+students are AP students and interestingly,
+they have no attributes but, those
+are the ones who have an association
+called took with AP
+courses AP courses have
+a course number and a
+title and then, when a
+student takes an AP course,
+there's an association class that
+says the year they took it and the grade they got.
+So, let's translate this to relations; the whole diagram.
+And we're going to use the first
+translation from our three schemes.
+So, that's the one where the
+sub-class relations contain the
+super class keys and then all the specialized attributes.
+So, let's start by generating
+the relation for the student class
+and that's straightforward, that's just the
+student ID and the student
+name, with the student ID being the key.
+And, then we're going to generate one
+relation for each of our three sub-classes.
+So that would be the foreign
+students which will take
+the key then from the
+student relations, so their student
+ID and the country that they're from.
+They'll be the domestic students and
+there we'll have again, the student
+ID, inherited from the super
+class and the state
+they're from and their social security number.
+And, then we'll also have the AP
+students and those have
+none of their own attributes but,
+we can get the key,
+and we do, from the super class.
+So, this is just going to be
+a list of the student ID's who are AP students.
+Now, let's keep going.
+So, let's take a look at AP students taking courses.
+So, we'll have, from the
+AP class, a
+straight forward translation to the
+course number and the
+title of the course and
+then, finally, we're going to
+have a relation for the
+fact that a AP student took classes.
+We had some multiplicities on that
+the first time but, neither of
+them were a zero one or
+one one so they're not going to be relevant in changing our design.
+So, took is going to have the key from both sides.
+Well, we don't see any key in here do we?
+But, subclasses always inherit
+the key from their parents, so
+the key here is implicitly
+the student ID and, that's what we'll be using here.
+Student ID, the key
+from the right hand side, the
+course number, that they've taken
+and then we'll have the two
+attributes from the association class,
+the year and the grade.
+So this actually looks like a pretty good design.
+Let me just make a few comments.
+The first one has to do with the AP student relation.
+So if every AP student
+does have to, does have to take at least one course.
+So, if we have, for example,
+a one dot dot something
+over there, then, we could
+actually eliminate it's relation because
+every student ID that
+appears in AP student, will
+also appear in the
+Took relation, so, this one
+will be redundant in that case.
+So, again, that could be
+eliminated based on the multiplicity,
+though, I wouldn't really expect an
+automatic translator to necessarily figure that one out.
+Another possibility I should mention,
+is that we could have a primary
+key specified here for
+domestic students for social security
+numbers since we would expect that
+to be unique, and that
+would translate to a key
+here, but let me be clear, this would be a separate key.
+It wouldn't be social security number and
+student ID together, but these
+would be two different keys and
+in SQL you can actually distinguish
+between those two, but we
+can't do it the way we've written the relations here.
+And, finally let me mention again
+that requirement that we
+have keys for regular classes
+if we want to do translation
+automatically and you might
+have noticed that for example, we
+certainly didn't have a key here
+for a foreign student with country
+being the only attribute, but subclasses
+are also not considered regular classes.
+So subclasses and association
+classes don't need to have keys
+and we can still have an automatic translation.
+Logically subclasses are inheriting
+their keys from their super-class
+and that one does need to
+have a key in order to have automatic translation.

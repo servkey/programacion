@@ -24,8 +24,44 @@ public class Libro{
 		return titulo;
 	}
 
+
+	public Copia buscarCopia(int identificador){
+		Copia resultado = null;
+		for (int i = 0; i < copias.length; i++){		
+			if (copias[i] != null && copias[i].getIdentificador() == identificador){
+				resultado = copias[i];			
+				break;
+			}
+		}
+		return resultado;
+	}
+
+	public void anadirCopia(int identificador){
+		Copia ctmp = new Copia();
+		ctmp.setIdentificador(identificador);
+
+		for (int i = 0; i < copias.length; i++){		
+			if (copias[i] == null){
+				ctmp.asociarLibro(this);
+				copias[i] = ctmp;				
+				break;
+			}
+		}
+	}
+
+
+	public void quitarCopia(int identificador){
+		for (int i = 0; i < copias.length; i++){		
+			if (copias[i] != null && copias[i].getIdentificador() == identificador){
+				copias[i] = null;				
+				break;
+			}
+		}
+	}
+
+
 	//Método asociar
-	public void asociarCopia(Copia copia){
+/*	public void asociarCopia(Copia copia){
 		for (int i = 0; i < copias.length; i++){		
 			if (copias[i] == null){
 				copia.asociarLibro(this);
@@ -37,17 +73,7 @@ public class Libro{
 		}
 	}
 
-
-	public void desasociarCopia(Copia copia){
-		for (int i = 0; i < copias.length; i++){
-			if (copias[i] == copia){
-				copias[i] = null;
-				break;
-			}
-		}		
-	}
-
-
+*/
 	public void mostrarDatosLibro(){
 		System.out.println("***Mostrando información de libro***");
 		System.out.println("Titulo: " + titulo);

@@ -8,6 +8,10 @@ public class Prestamo{
 	private Trabajador trabajador;
 	private Amonestacion amonestacion;
 
+	public Prestamo(){
+
+	}
+
 	public void setFechaSolicitud(String fechaSolicitud){
 		this.fechaSolicitud = fechaSolicitud;
 	}

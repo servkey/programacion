@@ -4,6 +4,25 @@ public class BibliotecaApp{
 
 	public static void main(String args[]){
 
+			
+		Persona ptmp1 = new Persona("Luis", "10/10/17", "lmontane@uv.mx", "X");
+		ptmp1.caminar();		
+
+
+
+		Socio s1tmp = new Socio("Pedro", "10/10/10","pedro@uv.mx", "NA", "S1837812");
+		s1tmp.caminar();
+		s1tmp.verAmonestaciones();
+		
+		System.out.println("Socio es: " + s1tmp.toString());
+
+		/*Persona ptmp2 = new Persona();
+		ptmp2.setNombre("Juan");
+		ptmp2.setCorreoElectronico("juan@uv.mx");
+		ptmp2.setEnfermedadesCronicas("NA");
+		ptmp2.setMatricula("S1837812");*/
+
+
 		Libro l1 = new Libro();
 		l1.setTitulo("Algoritmos");
 		l1.setAutores("Luis...");
@@ -21,30 +40,17 @@ public class BibliotecaApp{
 		catalogoLibros[1] = l1;
 		catalogoLibros[2] = l3;
 
-		Copia c11 = new Copia();
-		c11.setIdentificador(111);
-		Copia c12 = new Copia();
-		c12.setIdentificador(112);
-		Copia c2 = new Copia();
-		c2.setIdentificador(211);
-		Copia c3 = new Copia();	
-		c3.setIdentificador(311);
 
-		l1.asociarCopia(c11);
-		l1.asociarCopia(c12);
-		l2.asociarCopia(c2);
-		l3.asociarCopia(c3);
+		l1.anadirCopia(111);
+		l1.anadirCopia(112);
+		l2.anadirCopia(211);
+		l3.anadirCopia(311);
 
 	
 
 		Socio catalogoSocios[] = new Socio[3];
 
-		Socio s1 = new Socio();
-		s1.setNombre("Juan");
-		s1.setMatricula("S1837812");
-		s1.setCorreoElectronico("juan@uv.mx");
-		s1.setEnfermedadesCronicas("NA");
-
+		Socio s1 = new Socio("Juan", "10/10/10","juan@uv.mx", "NA", "S1837812");
 
 		Socio s2 = new Socio();
 		s2.setNombre("Ana");
@@ -81,13 +87,13 @@ public class BibliotecaApp{
 		p1.setFechaSolicitud("02/03/2018");
 		p1.asociarTrabajador(t1);
 		p1.asociarSocio(s2);
-		p1.asociarCopia(c2);	
+		p1.asociarCopia(l1.buscarCopia(111));	
 	
 		Prestamo p2 = new Prestamo();
 		p2.setFechaSolicitud("01/03/2018");
 		p2.asociarTrabajador(t1);
 		p2.asociarSocio(s1);
-		p2.asociarCopia(c3);	
+		p2.asociarCopia(l3.buscarCopia(311));	
 
 		catalogoPrestamos[0] = p1;
 		catalogoPrestamos[1] = p2;

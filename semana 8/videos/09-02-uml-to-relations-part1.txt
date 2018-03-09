@@ -1,0 +1,305 @@
+In this video we're going to
+learn about translating designs in
+the UML modelling inter-relational schemas.
+As a reminder if the
+application developer is using a
+high level design model then
+they will create their design usually
+using a graphical language that's
+sent to a translator and the
+translator will then produce
+a schema using the data
+model of the underline database
+management system, which frequently is relational.
+So, in our case we're looking at
+high level design in the
+UML data modeling subset which
+is then translated to
+relations and installed in a relational database system.
+It's this translation process that's the topic of this video.
+In the data model of subset
+of UML, we have five
+concepts that we learned in
+the previous video and we'll
+see now that designs using these
+concepts can be translated to
+relations automatically with one
+provision which is that every
+regular class has a key.
+And we'll see what we mean by a regular class in a moment.
+So, what we're going to
+do is go through each one of
+these concepts one at a
+time and show show how
+the concepts are translated to relations.
+For our examples we'll use
+primarily the same examples that
+we used in the previous video where we introduced UML.
+For classes will have a
+student class and a college class.
+Our students have a student
+ID which is the primary key,
+a student name and a GPA
+and our colleges will have a
+college name which we'll assume
+is unique, so that's the primary
+key, the state and the enrollment.
+The translation from classes to
+relations is absolutely direct
+we take the student class and
+we make a relation called student,
+we put the three attributes
+down for that relation and
+then the primary key from
+the student class becomes the key attribute in that relation.
+And similarly our college relation
+has the college name as
+a key, the state, and the enrollment.
+So all we're doing to turn
+classes into relation is basically turning them side ways.
+So now we're done with classes and let's move on to associations.
+We'll see that each association is
+going to be translated to its
+own relation that grabs a
+key from each side of the
+association so let's go
+to our example, the same one we
+used earlier, that has students applying to colleges.
+So, here's our diagram, with
+students applying to colleges and
+we'll already have generated the
+two relations for our classes,
+the student and the college relation
+and for the association applied
+between students and colleges we
+create a relation, we call
+it applied and that relation
+has attributes the keys
+from both sides so that
+would be the student ID from
+the student class and the
+college name from the college class.
+And if you think about it it makes a lot of sense.
+Applied is capturing relationships between
+students and colleges so we'll
+capture each of those relationships
+with one tuple in the
+applied relation identifying the student
+with the key and the college with the key.
+Now one question you might have
+is what is the key
+for a relation that we
+generate from an association, it
+turns out that depends on the
+concept of multiplicity that we
+learned about in the previous video
+so let me setup a generic
+example of two classes
+with an association and then and
+we'll talk about multiplicity and keys.
+Ok, so here we have both classes.
+We'll call them C1 and C2.
+And each one has
+a key attribute, we called it
+K1 and K2 over here
+and then one other attribute 01
+and 02 and then we have an association
+A between the two classes.
+So in terms of their relations
+that will be generated, we'll have for
+C1, K1-01 with K1
+as a key for C2 we'll
+have K2-02 with K2
+as key and then
+for our association A, we'll
+grab the key from each
+side, K1 and K2 and
+the question we have now is,
+what is the key for relation A?
+Well, as a default the key
+can be both attributes together, but
+in certain cases we can
+be more specific, and again
+that's going to depend on the
+multiplicity on our association.
+Let's suppose that our multiplicity is 0..1
+on the left hand side and a
+star on the right hand side
+and let's look at what
+that represents in terms of the type of relationship we're capturing.
+And, I'll make sure get it right
+this time, so what this
+is saying here is that if
+we have objects of C1
+on the left hand side,
+each one can be related to
+many objects of C2
+on the right hand side, but
+each object of C2 can
+be only be related to at
+most one object of
+C1, and some of them might not be related to any.
+So remember now, it's
+these edges that are being
+captured by the tuples in
+our relation for the association,
+and we can see that
+each element on the right
+hand side can only be
+involved in at most one
+tuple of A, so
+that tells us that K2
+is actually a key for
+A. So when we
+have zero dot dot
+one or one dot dot one, for that matter.
+On the left side, or
+on one side of an association,
+then the key attribute from
+the other side is a key for the association.
+So lets test out that rule
+on our student and college
+association and see if it makes sense.
+So I've drawn the association here
+and we're interested in the
+relation that's going to be
+generated for the association
+itself which will be the applied
+relation with the student ID
+on one side from one side
+and the college name from the
+other, so that's the relation
+we're going to generate for the
+association and the question
+is what's key for that relation.
+Well, let's add the constraint
+that every student applies to exactly one college.
+So, that would be a one dot
+dot one on the right and
+then a star on the
+left if a college can have any number of applicants.
+So, our rule of thumb,
+it's actually a rule, said
+that if we have one dot dot
+one or zero dot one dot
+dot one on one side then
+the other side would be the key.
+So that would tell us
+that if we have this one
+dot dot one on the right
+that student ID would be
+a key for applied and indeed
+that makes complete sense if each
+student can only apply to
+one college, then, they will
+indeed be a in the applied relation.
+Now there's actually a related concept here
+where we might need a
+relation for associations at all
+and again, that depends on
+multiplicity and again let's start with a generic example.
+so here's our generic example and
+from this our standard translation
+would give us three relations, one
+for C1, one for C2
+and then one capturing the association
+A which would have a key from each side.
+Now, what we're going to discover, is
+that in come cases it's actually
+possible to fold relations
+A into either C1 or
+C2 will end up with
+just two relation instead of
+three and will be capturing the same information.
+So let's suppose we have a 1..1
+and on our left hand side
+so again we're going to have
+the situation where from the
+left side to the right
+we have a fan out so
+each one on the right is
+related to exactly one on the left.
+If that's the case,
+then instead of having a
+separate relation for the
+associations basically for capturing
+these edges here, we can
+simply take the related element
+up from the left, the key
+from the left and add it to the element for the right.
+Let me show how that's done.
+So what we'll do is we'll
+change this C2 to have
+K2 and O go to
+as before, but also to
+have the key from the
+left hand side of class,
+or relation so the key
+from C-1, and then we don't need A any longer.
+And we can see why that works,
+because every element in C2
+is related to exactly one element
+in C-1, so we just
+add the key for that single
+element that is related to that relation.
+Now, what if the left hand
+side were zero dot dot one instead of one dot dot one?
+In that case, it would be
+possible for there to be
+some elements in C2 that
+aren't related to any elements
+in C1, and that would
+still be okay with this
+design as long as null
+values would be allowed in
+the third attribute of the relation for C-2.
+And finally, what's the key to this relation?
+Well, we knew before that the
+key for C2 was K2,
+just by definition of it
+being the primary key for the
+class, and that's still the
+case in the expanded C2.
+K2 will still be a
+key because we'll only have
+one instance of each
+object and the one K
+one that it would be related to through the association.
+So what we saw, to summarize,
+is that when we have zero
+dot dot one or one dot
+dot one on one aside and
+then we have an association and instead
+of making a relation for the
+association we can add
+the key from the side
+with the zero dot dot one
+or one dot dot one, to the
+relation that we generated for the class on the right hand side.
+So, let's take a look again
+with students and colleges just to confirm this intuition.
+So let's again suppose that a
+student applies to exactly one
+college and our rule
+of thumb says that we have
+a one dot dot one on
+one side, then we can
+take the key from that
+side and add it to
+the relation for the other side
+so we would be adding to
+the student relation, the college
+name attribute and we'd
+be getting rid of applied entirely.
+Let's just think about if that
+makes sense if every student
+is applying to exactly one college,
+it makes perfectly good sense to
+just add that college name to
+the student relation and furthermore
+if we had students
+just applying to either zero
+or one college, that would
+still be an acceptable design provided
+that null values are allowed for
+the college name attribute.

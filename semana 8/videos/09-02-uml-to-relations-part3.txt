@@ -1,0 +1,72 @@
+So that was a big one.
+But you'll be glad to know
+that composition and aggregation is going to be quite quick.
+So here is our example where
+we have our college class as
+usual, but colleges contain
+departments, and this solid diamond
+here is the composition operator
+that says that we have objects
+from the right hand side class that
+are components of the left hand side objects.
+So let's look at the translation to relations.
+We'll translate the college side
+as usual with a key
+attribute - college name and the other attributes.
+And then although this is an
+association, we're not going
+to have a separate class for
+it, we're going to have the
+right hand side class
+have both the values of
+the object in that class
+and the association captured together.
+So we'll have a relation called
+department, and it
+will have the department name
+and the building and then
+it will also include, the
+key of the object it belongs to.
+So in this case, that would be a college name.
+Now if you think carefully about it,
+this translation actually makes a
+lot of sense and is consistent with
+what we've already done.
+We said when we introduced
+the notion of composition that we
+have Effectively have by definition
+a one dot dot, one on the left hand side of the composition.
+So if we treated this
+as a regular association, used our
+regular translation and then
+used our rule that allowed
+us to get rid of association
+relations, we'd actually end up at exactly the same design.
+By the way this is a last
+example where we have a
+class that's not one of those
+regular classes that require a key.
+We don't have to have a
+key for the right-hand side
+of a composition in order to have an automatic translation.
+Aggregation, by the way,
+was the case where we have
+the MC diamond and
+that's implicitly a zero dot
+dot one instead of one dot dot one.
+We had an example with apartment
+buildings, I'm not going to
+bother to give that one again,
+but in that case where we have an aggregation should have in an association.
+All we need is the same
+design but the ability for
+that key we're grabbing from the
+left hand side to be
+null, and, then, everything works out fine.
+So, to conclude, the data modeling
+portion of UML, is a
+popular high level language for database designs.
+It's graphical and it can
+be translated automatically
+to relations, as long as
+every regular class has a key, and that typically is the case.
