@@ -37,8 +37,17 @@ public class ServidorTest{
 			OutputStreamWriter osw = new OutputStreamWriter(os);
 			BufferedWriter bw = new BufferedWriter(osw);
 			PrintWriter out = new PrintWriter(bw);
-			
-			out.println("Saludado desde el servidor....");
+
+			String respuesta = "HTTP/1.1 200 OK \n"
+				+ "Content-Type: text/html \n"
+				+ "Content-Length: 163\n"
+				+ "\n"
+				+ "<HTML>"
+				+ "<TITLE>Página de Flujos de E y S </TITLE>"
+				+ "<MARQUEE><H1>Hola</H1></MARQUEE><SCRIPT type='text/javascript'>alert(\"Hola clase de programación\");</SCRIPT>"
+				+ "</HTML>\n\n";		
+
+			out.println(respuesta);
 			out.flush();
 			cliente.close();
 		}catch(IOException e){
