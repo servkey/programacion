@@ -1,0 +1,14 @@
+t1, d1, a1
+t2, d2, a2
+t3, d3, a3
+t4, d4, a4
+t5, d5, a5
+t6, d6, a6
+t7, d7, a7
+t8, d8, a8
+hola, algo, 12012
+hola, hola, hosad
+hoasd, asdasd, asdsa
+algo1, aglo3, aglo33
+TtruthOrDare, NoeNose, 20168
+llll, xd, 123
