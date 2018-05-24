@@ -50,7 +50,9 @@ public class MysqlConexion{
 	    		System.out.println("SQLState: " + ex.getSQLState());
     			System.out.println("VendorError: " + ex.getErrorCode());
     			throw ex;
-    		}		
+    		}catch(NullPointerExcepcion ex){
+			ex.printStackTrace();
+		}		
 	        return rs;
    	}
 
